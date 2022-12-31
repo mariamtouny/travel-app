@@ -130,7 +130,7 @@ app.post('/', function(req, res){
   let username = req.body.username;
   let password = req.body.password;
   
-  if(process.env.PORT){
+  if(process.env.PORT && username == 'admin' && password == 'admin'){
     req.session.username = 'admin';
     res.render('home');
   }
