@@ -130,7 +130,11 @@ app.post('/', function(req, res){
   let username = req.body.username;
   let password = req.body.password;
   
-
+  if(username == 'admin' && password == 'admin'){
+    req.session.username = username;
+    res.render('home');
+  }
+  else { 
   MongoClient.connect("mongodb://127.0.0.1:27017", function(err, client){
   
   if(err) throw err;
@@ -159,7 +163,7 @@ app.post('/', function(req, res){
     });
 
   });
-    
+}
 });
 
 
@@ -188,7 +192,6 @@ app.post('/register', function(req, res){
   });
 
   }); 
-
 });
 
 app.post('/addtolist', function(req, res){
