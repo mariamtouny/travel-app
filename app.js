@@ -3,12 +3,7 @@ var path = require('path');
 var app = express();
 var alert = require('alert');
 const session = require('express-session');
-const MongoDBSession = require('connect-mongodb-session')(session);
 
-const store = new MongoDBSession ({
-uri: process.env.DATABASED,
-  collection: 'userSessions'
-});
 
 app.use(express.urlencoded({entended: true}));
 app.use(express.static('public'));
